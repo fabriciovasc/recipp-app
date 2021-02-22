@@ -1,5 +1,6 @@
 flask~=1.1.2
 flask_sqlalchemy
-mysql-connector-python
-mysqlclient
+pymysql
+sqlalchemy
 python-dotenv~=0.15.0
+gunicorn
