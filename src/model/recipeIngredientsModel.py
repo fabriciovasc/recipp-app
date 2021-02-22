@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
-class RecipeIngredients(db.model):
+class RecipeIngredients(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     id_ingredient = db.Column(db.Integer, nullable=False)
     id_recipe = db.Column(db.Integer, nullable=False)
