@@ -34,8 +34,8 @@ except Exception as err:
     print(f'Error: {err}')
 
 
-def initialize_db(application):
-    db = SQLAlchemy(application)
+def initialize_db():
+    db = SQLAlchemy(app)
     engine = db.create_engine(f'mysql+pymysql://{_USERNAME}:{_PASS}@{_HOST}:{_PORT}', {})
     try:
         engine.execute(f'CREATE DATABASE {_DB}')
