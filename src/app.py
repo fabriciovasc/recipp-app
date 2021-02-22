@@ -4,6 +4,9 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv, find_dotenv
 
+from src.model.ingredientModel import db as ingredient
+from src.model.recipeModel import db as recipe
+
 load_dotenv(find_dotenv())
 
 try:
@@ -22,9 +25,9 @@ try:
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{_USERNAME}:{_PASS}@{_HOST}:{_PORT}/{_DB}'
 
-    # TODO: add tables creations
+    ingredient.init_app(app)
+    recipe.init_app(app)
 
-    # TODO: implement Gunicorn
 
 except Exception as err:
     print(f'Error: {err}')
@@ -38,10 +41,13 @@ def initialize_db(flask):
     except Exception as err:
         print(f'Error database: {err}')
         pass
+    with flask.app_context():
+        ingredient.create_all()
+        recipe.create_all()
 
 
 @app.route('/')
-def go_to_index():
+def root():
     # TODO: add render source
     return render_template('')
 
