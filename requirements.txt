@@ -4,3 +4,4 @@ pymysql
 sqlalchemy
 python-dotenv~=0.15.0
 gunicorn
+Jinja2~=2.11.3
