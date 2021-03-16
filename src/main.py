@@ -49,5 +49,4 @@ def initialize_db():
 
 @app.route('/')
 def root():
-    # TODO: add render source
-    return render_template('/')
+    return render_template('dashboard/dashboard.html', title='Dashboard')

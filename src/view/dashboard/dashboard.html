@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboard/dashboard.css') }}">
+    {%  endblock %}
+</head>
+<body>
+    {% include 'header/header.html' %}
+
+    <main class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Receitas</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card-wrapper">
+                    <div class="card">
+                        <div class="card-title">
+                            <h4>Receita 1</h4>
+                        </div>
+                        <div class="card-content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac lectus metus. Suspendisse ac magna eu nibh laoreet aliquet. Vivamus pulvinar, quam sollicitudin posuere congue, risus ipsum luctus felis, nec sollicitudin dui libero non nibh.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title">
+                            <h4>Receita 1</h4>
+                        </div>
+                        <div class="card-content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac lectus metus. Suspendisse ac magna eu nibh laoreet aliquet. Vivamus pulvinar, quam sollicitudin posuere congue, risus ipsum luctus felis, nec sollicitudin dui libero non nibh.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title">
+                            <h4>Receita 1</h4>
+                        </div>
+                        <div class="card-content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac lectus metus. Suspendisse ac magna eu nibh laoreet aliquet. Vivamus pulvinar, quam sollicitudin posuere congue, risus ipsum luctus felis, nec sollicitudin dui libero non nibh.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <h1>Ingredientes</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card-wrapper">
+                    <div class="card">
+                        <div class="card-title">
+                            <h4>Ingrediente 1</h4>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title">
+                            <h4>Ingrediente 1</h4>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title">
+                            <h4>Ingrediente 1</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    {% include 'footer/footer.html' %}
+</body>
+</html>
