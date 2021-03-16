@@ -1,0 +1,25 @@
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='utils/components.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='header/header.css') }}">
+{% endblock %}
+
+<header>
+    <nav class="fixed-top navbar">
+        <span class="brand">
+            Recipp
+        </span>
+        <div class="navbar-wrapper">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Ingredientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Receitas</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
