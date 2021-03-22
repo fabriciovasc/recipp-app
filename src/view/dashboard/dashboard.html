@@ -14,69 +14,48 @@
 
     <main class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" style="display: flex; justify-content: space-between; align-items: center;">
                 <h1>Receitas</h1>
+                <a href="/recipes">Gerenciar receitas</a>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <div class="card-wrapper">
-                    <div class="card">
-                        <div class="card-title">
-                            <h4>Receita 1</h4>
-                        </div>
-                        <div class="card-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac lectus metus. Suspendisse ac magna eu nibh laoreet aliquet. Vivamus pulvinar, quam sollicitudin posuere congue, risus ipsum luctus felis, nec sollicitudin dui libero non nibh.</p>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-title">
-                            <h4>Receita 1</h4>
-                        </div>
-                        <div class="card-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac lectus metus. Suspendisse ac magna eu nibh laoreet aliquet. Vivamus pulvinar, quam sollicitudin posuere congue, risus ipsum luctus felis, nec sollicitudin dui libero non nibh.</p>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-title">
-                            <h4>Receita 1</h4>
-                        </div>
-                        <div class="card-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac lectus metus. Suspendisse ac magna eu nibh laoreet aliquet. Vivamus pulvinar, quam sollicitudin posuere congue, risus ipsum luctus felis, nec sollicitudin dui libero non nibh.</p>
-                        </div>
-                    </div>
+                    {% if data.recipes %}
+                        {% for recipe in data.recipes %}
+                            <div class="card">
+                                <div class="card-title">
+                                    <h4>{{ recipe.name }}</h4>
+                                </div>
+                                <div class="card-content">
+                                <h5>Ingredientes</h5>
+                                    {% if recipe.ingredients %}
+                                        {% for key, value in recipe.ingredients.items() %}
+                                            <p>{{ key }}: {{ value }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" style="display: flex; justify-content: space-between; align-items: center;">
                 <h1>Ingredientes</h1>
+                <a href="/ingredients">Gerenciar ingredientes</a>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <div class="card-wrapper">
-                    <div class="card">
-                        <div class="card-title">
-                            <h4>Ingrediente 1</h4>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-title">
-                            <h4>Ingrediente 1</h4>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-title">
-                            <h4>Ingrediente 1</h4>
-                        </div>
-                    </div>
-                </div>
+                {% if data.ingredients %}
+                    {% for ingredient in data.ingredients %}
+                        <span class="label label-colorful">{{ ingredient.name }}</span>
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     </main>
