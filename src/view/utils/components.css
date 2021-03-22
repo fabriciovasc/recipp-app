@@ -10,7 +10,7 @@ body {
 }
 
 body > .container {
-    padding: 60px 15px 0;
+    padding: 100px 15px 0;
 }
 
 .row {
@@ -29,11 +29,22 @@ body > .container {
 }
 
 h1 {
+    margin: 0;
     font-size: 2.5rem;
 }
 
 h4 {
+    margin: 0;
     font-size: 1.5rem;
+}
+
+h5 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+p {
+    margin: 0;
 }
 
 .container {
@@ -42,6 +53,33 @@ h4 {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.label {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+}
+
+.label-colorful {
+    color: #fff;
+    background-color: #6c757d;
 }
 
 @media (min-width: 576px) {
