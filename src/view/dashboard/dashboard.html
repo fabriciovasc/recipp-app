@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>{{ title }}</title>
 
     {% block css %}
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboard/dashboard.css') }}">
@@ -29,12 +29,19 @@
                                     <h4>{{ recipe.name }}</h4>
                                 </div>
                                 <div class="card-content">
-                                <h5>Ingredientes</h5>
-                                    {% if recipe.ingredients %}
-                                        {% for key, value in recipe.ingredients.items() %}
-                                            <p>{{ key }}: {{ value }}</p>
-                                        {% endfor %}
-                                    {% endif %}
+                                    <div class="ingredients">
+                                        <h5>Ingredientes</h5>
+                                        {% if recipe.ingredients %}
+                                            {% for key, value in recipe.ingredients.items() %}
+                                                <p>{{ key }}: {{ value }}</p>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="preparation">
+                                        <h5>Preparação</h5>
+                                        <p>{{ recipe.steps }}</p>
+                                    </div>
                                 </div>
                             </div>
                         {% endfor %}
