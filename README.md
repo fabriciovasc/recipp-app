@@ -35,7 +35,7 @@ git pull
 
 - Instalação das dependências
 ```
-pip install -r requirements.txt
+pip install -r requeriments.txt
 ```
 
 - Configurando ambiente
