@@ -15,8 +15,8 @@
 <main class="container">
     <div class="row">
         <div class="col-12" style="display: flex; align-items: center; justify-content: space-between;">
-            <h1>Minhas receitas</h1>
-            <a href="recipes/create">Criar receita</a>
+            <h1>{{ title }}</h1>
+            <a href="{{ url_for('recipe.create_recipe') }}">Criar receita</a>
         </div>
     </div>
     <div class="row">
@@ -28,17 +28,24 @@
                             <div class="card-title" style="display: flex; justify-content: space-between; align-items: center;">
                                 <h4>{{ recipe.name }}</h4>
                                 <div>
-                                    <a href="recipes/edit">Remover</a> |
-                                    <a href="recipes/edit">Editar</a>
+                                    <a>Remover</a> |
+                                    <a href="/recipes/edit/{{ recipe.id }}">Editar</a>
                                 </div>
                             </div>
                             <div class="card-content">
-                                <h5>Ingredientes</h5>
-                                {% if recipe.ingredients %}
-                                    {% for key, value in recipe.ingredients.items() %}
-                                        <p>{{ key }}: {{ value }}</p>
-                                    {% endfor %}
-                                {% endif %}
+                                <div class="ingredients">
+                                    <h5>Ingredientes</h5>
+                                    {% if recipe.ingredients %}
+                                        {% for key, value in recipe.ingredients.items() %}
+                                            <p>{{ key }}: {{ value }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+
+                                <div class="preparation">
+                                    <h5>Preparação</h5>
+                                    <p>{{ recipe.steps }}</p>
+                                </div>
                             </div>
                         </div>
                     {% endfor %}

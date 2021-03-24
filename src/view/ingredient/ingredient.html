@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingredientes</title>
+    <title>{{ title }}</title>
 
     {% block css %}
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ingredient/ingredient.css') }}">
@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-12" style="display: flex; align-items: center; justify-content: space-between;">
             <h1>Meus ingredientes</h1>
-            <a href="ingredients/create">Adicionar ingrediente</a>
+            <a href="{{ url_for('ingredient.create_ingredients') }}">Adicionar ingredientes</a>
         </div>
     </div>
     <div class="row">
@@ -39,8 +39,8 @@
                             <td>{{ ingredient.name }}</td>
                             <td>{{ ingredient.created_at }}</td>
                         <td>
-                              <a href="ingredients/remove">Remover</a> |
-                            <a href="ingredients/edit">Editar</a>
+                              <a>Remover</a> |
+                            <a href="{{ url_for('ingredient.update_ingredients') }}">Editar</a>
                         </td>
                         </tr>
                     {% endfor %}
