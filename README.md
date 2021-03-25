@@ -76,3 +76,10 @@ WSGI (windows terminal ou shell)
 ```
 python/python3 wsgi.py
 ```
+
+- Acessando aplicação
+Digite **http://localhost:1234** para acessar o sistema de gerenciamento de receitas
+
+## Entregas parciais
+
+- [Entrega 1 - Protótipo navegável](https://youtu.be/KG1fHToLZtw)
