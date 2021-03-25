@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv, find_dotenv
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 from src.model.ingredientModel import db as ingredient_model
 from src.model.recipeModel import db as recipe_model
@@ -29,6 +30,8 @@ try:
 
     ingredient_model.init_app(app)
     recipe_model.init_app(app)
+
+    app.wsgi_app = ProxyFix(app.wsgi_app)
 
     app.register_blueprint(ingredient_controller)
     app.register_blueprint(recipe_controller)
@@ -60,5 +63,4 @@ def index():
         ingredients = []
         recipes = []
     data = {'ingredients': ingredients, 'recipes': recipes}
-    print(data)
     return render_template('dashboard/dashboard.html', title='Dashboard', data=data)
