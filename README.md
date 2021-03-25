@@ -28,14 +28,21 @@ cd recipp-app
 git checkout master
 git pull
 ```
+
+- Instalando virtualenv
+```
+pip/pip3 install virtualenv
+```
+
 - Inicializando ambiente virtual
 ```
- python -m venv env
+ python/python3 -m venv env
+ source env/bin/activate
 ```
 
 - Instalação das dependências
 ```
-pip install -r requeriments.txt
+pip/pip3 install -r requirements.txt
 ```
 
 - Configurando ambiente
@@ -44,7 +51,28 @@ Configure a conexão com o MySQL no arquivo **.env** localizado na raiz do proje
 ```
 MYSQL_DATABASE=receitas
 MYSQL_HOST=localhost
-MYSQL_PORT=3306
-MYSQL_USERNAME=root
-MYSQL_PASSWORD=1234554321
+MYSQL_PORT=3306 // porta padrão
+MYSQL_USERNAME=root // usuário do servidor MySQL
+MYSQL_PASSWORD=1234554321 // senha do usuário do servidor MySQL
+```
+
+- Criando collection (banco de dados)
+
+Uma vez iniciado, será criado a collection **receitas**, após subir a aplicação com sucesso encerre para inicializar com o Gunicorn ou WSGI
+```
+python/python3 wsgi.py create_db
+```
+
+- Inicializando aplicação
+
+Gunicorn (somente em shell)
+```
+gunicorn --bind IP:PORTA wsgi:app
+
+gunicorn --bind 0.0.0.0:1234 wsgi:app
+```
+
+WSGI (windows terminal ou shell)
+```
+python/python3 wsgi.py
 ```
