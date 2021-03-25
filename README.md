@@ -78,7 +78,8 @@ python/python3 wsgi.py
 ```
 
 - Acessando aplicação
-Digite **http://localhost:1234** para acessar o sistema de gerenciamento de receitas
+
+Acesse **http://localhost:1234** para acessar o sistema de gerenciamento de receitas
 
 ## Entregas parciais
 
