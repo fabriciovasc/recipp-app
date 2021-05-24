@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template
+from flask_cors import CORS, cross_origin
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv, find_dotenv
 from werkzeug.middleware.proxy_fix import ProxyFix
@@ -18,6 +19,8 @@ try:
     template_dir = os.path.join(template_dir, 'view')
 
     app = Flask(__name__, template_folder=template_dir, static_folder=template_dir)
+    cors = CORS(app)
+    app.config['CORS_HEADERS'] = 'Content-Type'
 
     _USERNAME = os.getenv('MYSQL_USERNAME')
     _PASS = os.getenv('MYSQL_PASSWORD')
@@ -54,6 +57,7 @@ def initialize_db():
 
 
 @app.route('/')
+@cross_origin()
 def index():
     try:
         ingredients = get_ingredients()
