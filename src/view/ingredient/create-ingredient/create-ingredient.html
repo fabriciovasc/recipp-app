@@ -9,6 +9,10 @@
         <link rel="stylesheet" type="text/css"
               href="{{ url_for('static', filename='ingredient/create-ingredient/create-ingredient.css') }}">
     {% endblock %}
+
+    {% block js %}
+    <script src="{{ url_for('static', filename='ingredient/create-ingredient/create-ingredient.js') }}"></script>
+    {% endblock %}}
 </head>
 <body>
 {% include 'header/header.html' %}
@@ -23,16 +27,21 @@
     <form method="POST">
         <div class="row">
             <div class="col-12" style="display: flex; align-items: center;">
-                <input type="text" class="form-control" placeholder="Nome do ingrediente" id="ingredient_id" style="margin: 10px;">
-                <button type="button" class="button submit-button">Adicionar</button>
+                <input type="text" class="form-control" placeholder="Nome do ingrediente" id="ingredient-name" style="margin: 10px;">
+                <button type="button" class="button" id="add-ingredient" onclick="addIngredient()">Adicionar</button>
             </div>
-            <div class="col-12" style="display: flex; align-items: center;">
-                <input type="text" class="form-control" placeholder="Nome do ingrediente" id="ingredient_id" style="margin: 10px;">
-                <button type="button" class="button submit-button">Adicionar</button>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <h4>Ingredientes pré-cadastrados:</h4>
+                <p id="listIngredients">Nenhum</p>
             </div>
-            <div class="col-12" style="display: flex; align-items: center;">
-                <input type="text" class="form-control" placeholder="Nome do ingrediente" id="ingredient_id" style="margin: 10px;">
-                <button type="button" class="button submit-button">Adicionar</button>
+        </div>
+
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-12">
+                <button type="button" class="button submit-button" id="submit-ingredients" style="width: 100%;" onclick="create()" disabled>Criar ingredientes</button>
             </div>
         </div>
     </form>
