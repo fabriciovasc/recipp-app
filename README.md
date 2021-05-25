@@ -20,8 +20,9 @@
 - Python V3.6 ou >
 - MySQL Database
 
-## Iniciar projeto
-- Clonar e atualizar repositório
+## Inicialização do ambiente
+
+#### Clonar e atualizar repositório
 ```
 git clone https://github.com/fabsvas/recipp-app.git
 cd recipp-app
@@ -29,23 +30,30 @@ git checkout master
 git pull
 ```
 
-- Instalando virtualenv
+#### Instalando virtualenv
 ```
 pip/pip3 install virtualenv
 ```
 
-- Inicializando ambiente virtual
+#### Inicializando ambiente virtual no Linux
 ```
  python/python3 -m venv env
  source env/bin/activate
 ```
 
-- Instalação das dependências
+#### Inicializando ambiente virtual no Windows
+```
+ python/python3 -m venv env
+ cd env/Scripts
+ activate
+```
+
+#### Instalação das dependências
 ```
 pip/pip3 install -r requirements.txt
 ```
 
-- Configurando ambiente
+#### Conexão com o banco de dados
 
 Configure a conexão com o MySQL no arquivo **.env** localizado na raiz do projeto de acordo com o exemplo a seguir
 ```
@@ -56,30 +64,35 @@ MYSQL_USERNAME=root // usuário do servidor MySQL
 MYSQL_PASSWORD=1234554321 // senha do usuário do servidor MySQL
 ```
 
-- Criando collection (banco de dados)
-
-Uma vez iniciado, será criado a collection **receitas**, após subir a aplicação com sucesso encerre para inicializar com o Gunicorn ou WSGI
+#### Criando schema e tabelas
 ```
 python/python3 wsgi.py create_db
 ```
 
-- Inicializando aplicação
+Uma vez iniciado, será criado o schema **receitas** e as respectivas tabelas:
+- [x] ingredient
+- [x] recipe
+- [x] recipe_ingredient  
 
-Gunicorn (somente em shell)
+Após subir a aplicação com sucesso encerre para inicializar com o **Gunicorn** ou **WSGI**
+
+## Subindo a aplicação
+
+#### Para rodar a aplicação
+
+> Gunicorn 
+
+**Atente-se, o _Gunicorn_ só funcionará em _sistemas UNIX_**
 ```
-gunicorn --bind IP:PORTA wsgi:app
+gunicorn --bind <host:porta> wsgi:app
 
-gunicorn --bind 0.0.0.0:1234 wsgi:app
+Exemplo: gunicorn --bind 0.0.0.0:1234 wsgi:app
 ```
 
-WSGI (windows terminal ou shell)
+> WSGI
 ```
 python/python3 wsgi.py
 ```
-
-- Acessando aplicação
-
-Acesse **http://localhost:1234** para acessar o sistema de gerenciamento de receitas
 
 ## Entregas parciais
 
