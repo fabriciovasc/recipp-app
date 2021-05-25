@@ -61,7 +61,6 @@ def update_ingredient(_id):
             res = json.dumps({'message': str(error), 'error': True})
             return Response(res, mimetype='application/json', status=500)
     else:
-        print('id', _id)
         ingredient = IngredientModel.query.filter_by(id=_id).first()
         return render_template('ingredient/edit-ingredient/edit-ingredient.html', title='Editar ingrediente',
                                ingredient=ingredient)

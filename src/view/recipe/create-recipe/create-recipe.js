@@ -10,7 +10,12 @@ function createRecipe() {
     ajax.setRequestHeader('Content-Type', 'application/json')
 
     ajax.onload = (() => {
-        console.log('success')
+        const res = JSON.parse(ajax.responseText)
+        if (!res.error) {
+            window.location.href = '/recipes/'
+        } else {
+            alert('Erro')
+        }
     })
 
     ajax.onerror = (error => {
