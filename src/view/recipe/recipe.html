@@ -8,6 +8,10 @@
     {% block css %}
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='recipe/recipe.css') }}">
     {% endblock %}
+
+    {% block js %}
+    <script src="{{ url_for('static', filename='recipe/recipe.js') }}"></script>
+    {% endblock %}}
 </head>
 <body>
 {% include 'header/header.html' %}
@@ -22,24 +26,18 @@
     <div class="row">
         <div class="col-12">
             <div class="card-wrapper">
-                {% if data.recipes %}
-                    {% for recipe in data.recipes %}
-                        <div class="card">
-                            <div class="card-title" style="display: flex; justify-content: space-between; align-items: center;">
+                {% if recipes %}
+                    {% for recipe in recipes %}
+                        <div class="card" id="recipe_{{recipe.id}}">
+                            <div class="card-title">
                                 <h4>{{ recipe.name }}</h4>
-                                <div>
-                                    <a>Remover</a> |
-                                    <a href="/recipes/edit/{{ recipe.id }}">Editar</a>
-                                </div>
                             </div>
                             <div class="card-content">
                                 <div class="ingredients">
                                     <h5>Ingredientes</h5>
-                                    {% if recipe.ingredients %}
-                                        {% for key, value in recipe.ingredients.items() %}
-                                            <p>{{ key }}: {{ value }}</p>
-                                        {% endfor %}
-                                    {% endif %}
+                                    {% for ingredient in recipe.ingredients %}
+                                        <p>{{ingredient.name}}</p>
+                                    {% endfor %}
                                 </div>
 
                                 <div class="preparation">
