@@ -5,8 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv, find_dotenv
 from werkzeug.middleware.proxy_fix import ProxyFix
 
-from src.model.ingredientModel import db as ingredient_model
-from src.model.recipeModel import db as recipe_model
+from src.model.models import db as models
 
 from src.controller.ingredientController import ingredient_controller, get_ingredients
 from src.controller.recipeController import recipe_controller, get_recipes
@@ -31,8 +30,7 @@ try:
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{_USERNAME}:{_PASS}@{_HOST}:{_PORT}/{_DB}'
 
-    ingredient_model.init_app(app)
-    recipe_model.init_app(app)
+    models.init_app(app)
 
     app.wsgi_app = ProxyFix(app.wsgi_app)
 
@@ -52,16 +50,15 @@ def initialize_db():
     except Exception as error:
         print(f'database error: {error}')
     with app.app_context():
-        ingredient_model.create_all()
-        recipe_model.create_all()
+        models.create_all()
 
 
 @app.route('/')
 @cross_origin()
 def index():
     try:
-        ingredients = get_ingredients()
-        recipes = get_recipes()
+        ingredients = get_ingredients().json['ingredients']
+        recipes = get_recipes().json['recipes']
     except Exception as error:
         print('error', error)
         ingredients = []
