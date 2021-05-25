@@ -31,11 +31,9 @@
                                 <div class="card-content">
                                     <div class="ingredients">
                                         <h5>Ingredientes</h5>
-                                        {% if recipe.ingredients %}
-                                            {% for key, value in recipe.ingredients.items() %}
-                                                <p>{{ key }}: {{ value }}</p>
-                                            {% endfor %}
-                                        {% endif %}
+                                        {% for ingredient in recipe.ingredients %}
+                                        <p>{{ingredient.name}}</p>
+                                        {% endfor %}
                                     </div>
 
                                     <div class="preparation">
