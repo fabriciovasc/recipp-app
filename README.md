@@ -60,9 +60,22 @@ Configure a conexão com o MySQL no arquivo **.env** localizado na raiz do proje
 MYSQL_DATABASE=receitas
 MYSQL_HOST=localhost
 MYSQL_PORT=3306 // porta padrão
-MYSQL_USERNAME=root // usuário do servidor MySQL
-MYSQL_PASSWORD=1234554321 // senha do usuário do servidor MySQL
+MYSQL_USERNAME=root // usuário administrador com todos previlégios do servidor MySQL
+MYSQL_PASSWORD=1234554321 // senha do usuário administrador do servidor MySQL
 ```
+**Utilize _usuário_ e _senha_ com previlégios de _administrador_**
+
+- Exemplo:
+  ```bash
+  $ sudo mysql -u root -p
+  mysql> CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';
+  mysql> ALTER USER 'admin'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+  mysql> GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
+  mysql> GRANT SELECT, INSERT, UPDATE, DELETE ON *.* TO 'admin'@'localhost';
+  mysql> exit;
+  $ sudo service mysql restart 
+  ```
+
 
 #### Criando schema e tabelas
 ```
